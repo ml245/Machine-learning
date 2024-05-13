@@ -3,190 +3,215 @@
 
 <head>
     <meta charset="utf-8">
-    
-    <!--====== Title ======-->
-    <title>FoodPoision!</title>
-    
+    <title>Visualization</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-        
-    <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        
-    <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
-        
-    <!--====== Font Awesome CSS ======-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
-        
-    <!--====== Animate CSS ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
-        
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/png">
     
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
-    
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
- 
+    <!--====== Chart.js ======-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!-- Load Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            width: 50%;
+            padding: 20px;
+            vertical-align: top;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="alert-area" class="alert-bottom"></div>
     <!--====== HEADER PART START ======-->
     <header class="header-area">
         <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-        
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul id="nav" class="navbar-nav m-auto">
-                                    <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#service"></a>
-                                    </li>
-                                    
-                                </ul>
-                            </div> 
-                            
-                           
-                        </nav> 
-                    </div>
-                </div> 
-            </div> 
-        </div> 
-        
-
-        <div id="home" class="header-hero bg_cover d-lg-flex align-items-center" style="background-image: url(assets/images/b.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header-hero-content">
-                            <h1 class="hero-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" style="color: #FEFDED ">Predict, Pivot, and Persist for Palate Perfection.</h1>
-                            <p class="text wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" style="font-size: 16px">Utilize our platform for rapid, secure, and safe food data analysis.</p>
-                            <div class="header-play wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-                             <!--   <a class="play-btn" href="https://rebrand.ly/explore-ud">Upload Your Files Now <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
-  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-  <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
-</svg></a>
-                            </div> -->
-                        </div> <!-- header hero content -->
-                    </div>
-                </div> <!-- row -->
-            </div> 
-            <div class="header-hero-image d-flex align-items-center wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="1.1s">
-               <div class="image">
-                  <!--  <img src="a.png" alt="Hero Image"> -->
-                </div> 
-            </div> <!-- header hero image -->
-
-            <div class="header-shape">
-                <img src="assets/images/shape/header-shape.png" alt="shape">
-            </div>
-        </div> <!-- header hero -->
+            <!-- Navbar content goes here -->
+        </div>
+        <div id="home" class="upload-hero">
+            <h1>Visualization</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h2>Pie Chart</h2>
+                        <div id="piechart" style="width: 100%; height: 600px;"></div>
+                    </td>
+                    <td>
+                        <h2>Scatter Chart</h2>
+                        <canvas id="myChart" style="width:100%;max-width:600px;height: 500px"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Doughnut Chart</h2>
+                        <canvas id="myDChart" style="width:100%;max-width:600px;height: 500px"></canvas>
+                    </td>
+                    <td>
+                        <h2>Bar Chart</h2>
+                        <canvas id="myBChart" style="width:100%;max-width:600px;height:500px;"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2>Multiple Lines Chart</h2>
+                        <center><canvas id="myMLChart" style="width:100%;max-width:1000px;height:500px;"></canvas></center>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </header>
 
-    <section id="blog" class="blog-area pt-115 pb-120">
-        <div class="container">
-                        <div class="header-hero-content text-center">
-                            <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">Upload your files below</h1>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">You can upload all file types and even entire folders. </p>
-                            <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">*up to 1GB.</p>
-                        <br>
-                        
-                        <div id="dropzone" class="drop-box active-animatioon">
-                            <br>
-                            <br>
-                            <h3>Drag & Drop Here!</h3>
-                            
-                            <div id="browse-files" >click to upload a file</div>
-                                
-    
-                            <br><br>
-                            <div id="files-uploaded-area">
-                                <div id="default-text">
-                                    <br><br>
-                                    <h3 style="margin-bottom: 2rem;" class="wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s">Files you upload will appear here!</h3>
-                                </div>
-                                
-                            </div>
-                            <br>
-                        </div>
-                        <br>
-                        <br><br><br><br><br><br>
-                        <a class="main-btn" id="upload" href="#">Upload</a>
-                        <!-- <div class="navbar-btn d-none d-sm-inline-block">
-                         
-                        </div> -->
-                        </div> <!-- header hero content -->
-        </div> 
-    </section>
-
-    
-    <footer id="footer" class="footer-area bg_cover" style="background-image: url(b.jpg)">
-        <div class="footer-shape">
-            <img src="assets/images/shape/footer-shape.png" alt="footer shape">
-        </div> <!-- footer shape -->
-        <div class="container">
-            <div class="footer-copyright text-center">
-                <p class="text">Created by Algorithm , All Rights Reserved.</p>
-              <!--  <p class="text"><img height="20" width="20" src="https://www.svgrepo.com/show/12717/new-email-interface-symbol-of-black-closed-envelope.svg"> Dumay@sharefiles.ml</p> 
-                <p class="text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-discord" viewBox="0 0 16 16"><path d="M6.552 6.712c-.456 0-.816.4-.816.888s.368.888.816.888c.456 0 .816-.4.816-.888.008-.488-.36-.888-.816-.888zm2.92 0c-.456 0-.816.4-.816.888s.368.888.816.888c.456 0 .816-.4.816-.888s-.36-.888-.816-.888z"/><path d="M13.36 0H2.64C1.736 0 1 .736 1 1.648v10.816c0 .912.736 1.648 1.64 1.648h9.072l-.424-1.48 1.024.952.968.896L15 16V1.648C15 .736 14.264 0 13.36 0zm-3.088 10.448s-.288-.344-.528-.648c1.048-.296 1.448-.952 1.448-.952-.328.216-.64.368-.92.472-.4.168-.784.28-1.16.344a5.604 5.604 0 0 1-2.072-.008 6.716 6.716 0 0 1-1.176-.344 4.688 4.688 0 0 1-.584-.272c-.024-.016-.048-.024-.072-.04-.016-.008-.024-.016-.032-.024-.144-.08-.224-.136-.224-.136s.384.64 1.4.944c-.24.304-.536.664-.536.664-1.768-.056-2.44-1.216-2.44-1.216 0-2.576 1.152-4.664 1.152-4.664 1.152-.864 2.248-.84 2.248-.84l.08.096c-1.44.416-2.104 1.048-2.104 1.048s.176-.096.472-.232c.856-.376 1.536-.48 1.816-.504.048-.008.088-.016.136-.016a6.521 6.521 0 0 1 4.024.752s-.632-.6-1.992-1.016l.112-.128s1.096-.024 2.248.84c0 0 1.152 2.088 1.152 4.664 0 0-.68 1.16-2.448 1.216z"/></svg>
-                Dumay#2642</p>
-                <p class="text"><img height="20" width="20" src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"> Itay-Dum</p>
-            </div> -->
-        </div> <!-- container -->
+    <!--====== FOOTER PART START ======-->
+    <footer id="footer" class="footer-area bg_cover" style="background-image: url(../assets/images/footer-bg.jpg)">
+        <!-- Footer content goes here -->
     </footer>
-    
-
-    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
 
     <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
+    <script src="../assets/js/vendor/jquery-3.5.1.min.js"></script>
+
     <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    
-    <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    
-    <!--====== WOW js ======-->
-    <script src="assets/js/wow.min.js"></script>
-    
-    <!--====== Scrolling Nav js ======-->
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
-    
-    <!--====== Scroll It js ======-->
-    <script src="assets/js/scrollIt.min.js"></script>
-    
-    <script src="js/index.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
     <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
-    
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        // Load Google Charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Pie chart data
+            var pieData = google.visualization.arrayToDataTable([
+                ['Food Posioning in Industry', 'Food Contain Chemical Compostion.'],
+                ['Chicken', 10],
+                ['Spinach', 27],
+                ['Beef', 12],
+                ['Milk', 11],
+                ['Other Food', 20]
+            ]);
+
+            var pieOptions = {
+                title: 'Food Posioning in Industry,Food Contain Chemical Compostion.'
+            };
+
+            var pieChart = new google.visualization.PieChart(document.getElementById('piechart'));
+            pieChart.draw(pieData, pieOptions);
+
+            // Scatter chart data
+            const xyValues = [
+                {x:50, y:7},
+                {x:60, y:8},
+                {x:70, y:8},
+                {x:80, y:9},
+                {x:90, y:9},
+                {x:100, y:9},
+                {x:110, y:10},
+                {x:120, y:11},
+                {x:130, y:14},
+                {x:140, y:14},
+                {x:150, y:15}
+            ];
+
+            new Chart("myChart", {
+                type: "scatter",
+                data: {
+                    datasets: [{
+                        pointRadius: 4,
+                        pointBackgroundColor: "rgb(0,0,255)",
+                        data: xyValues
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    scales: {
+                        xAxes: [{ticks: {min: 40, max:160}}],
+                        yAxes: [{ticks: {min: 6, max:16}}]
+                    }
+                }
+            });
+
+            // Donut Chart
+            const xValues = ["Nausea", "Abdominal pain", "Vomiting", "Diarrhea","Fever"];
+            const yValues = [55, 49, 44, 24, 15];
+            const barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+            new Chart("myDChart", {
+                type: "doughnut",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: "Symptoms	mostly occur"
+                    }
+                }
+            });
+
+            const xBarValues = ["Cook chicken thoroughly, avoid cross-contamination", "Wash thoroughly before consumption", "Cook beef to safe temperatures", "Store milk in the refrigerator"];
+            const yBarValues = [55, 50, 45, 40];
+
+            new Chart("myBChart", {
+                type: "bar",
+                data: {
+                    labels: xBarValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yBarValues
+                    }]
+                },
+                options: {
+                    legend: {display: false},
+                    title: {
+                        display: true,
+                        text: "Prevention that mostly takes"
+                    }
+                }
+            });
+
+            const xyLineValues = [100,200,300,400,500,600,700,800,900,1000];
+
+            new Chart("myMLChart", {
+                type: "line",
+                data: {
+                    labels: xyLineValues,
+                    datasets: [{ 
+                        data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                        borderColor: "red",
+                        fill: false
+                    }, { 
+                        data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                        borderColor: "green",
+                        fill: false
+                    }, { 
+                        data: [300,700,2000,5000,6000,4000,2000,1000,200,100],
+                        borderColor: "blue",
+                        fill: false
+                    }]
+                },
+                options: {
+                    legend: {display: false}
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
